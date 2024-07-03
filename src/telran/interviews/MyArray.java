@@ -8,7 +8,7 @@ public class MyArray<T> {
     HashMap<Integer, T> array = new HashMap<>(size);
 
     public void setAll(T value) {
-        array = new HashMap<>(size);
+        array = new HashMap<>();
         defaultValue = value;
     }
 

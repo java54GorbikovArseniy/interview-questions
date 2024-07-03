@@ -16,8 +16,7 @@ public class ConnectionPool {
     }
 
     public Connection getConnection(Connection connection) {
-        long id = connection.id();
-        return linkedHashMap.computeIfAbsent(id, c -> connection);
+        return linkedHashMap.computeIfAbsent(connection.id(), id -> connection );
     }
 
     public boolean isInPool(long id) {

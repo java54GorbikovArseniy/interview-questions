@@ -36,34 +36,29 @@ public class InterviewQuestions {
     static public boolean isSum2(int[] array, int sum) {
         boolean res = false;
         Set<Integer> seenNumbers = new HashSet<>();
-        for (int i = 0; i < array.length && !res; i++) {
+        int i = 0;
+        while (i < array.length && !res) {
             int number = array[i];
             int complement = sum - number;
             if (seenNumbers.contains(complement)) {
                 res = true;
             }
             seenNumbers.add(number);
+            i++;
         }
         return res;
     }
 
     static public int getMaxWithNegativePresentation(int[] array) {
-        Set<Integer> positive = new HashSet<>();
-        Set<Integer> negative = new HashSet<>();
-        int max = -1;
+        HashSet<Integer> elements = new HashSet<>();
+        int maxVal = -1;
 
-        for (int i : array) {
-            if (i < 0) {
-                negative.add(i);
-            } else {
-                positive.add(i);
+        for (int num : array) {
+            if (elements.contains(-num)) {
+                maxVal = Math.max(maxVal, Math.abs(num));
             }
+            elements.add(num);
         }
-        for (Integer integer : positive) {
-            if (negative.contains(-integer)) {
-                max = Math.max(max, Math.abs(integer));
-            }
-        }
-        return max;
+        return maxVal;
     }
 }
